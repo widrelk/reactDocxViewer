@@ -1,0 +1,39 @@
+a.commentLink:link {
+    color:black;
+    text-decoration: none;
+}
+a.commentLink:visited {
+    color:black;
+    text-decoration: none;
+}
+a.commentLink:hover {
+    color:black;
+    text-decoration: none;
+}
+a.commentLink:active {
+    color:black;
+    text-decoration: none;
+}
+
+span.commentArea {
+    transition: background-color 2s;
+}
+span.commentAreaSelected {
+    background-color:coral;
+}
+span.commentArea:focus {
+    background-color: coral;
+}
+span.commentArea:hover {
+    background-color: green;
+}
+
+div.commentShell {
+    margin-bottom:"10px";
+    padding:"7px";
+    border-radius:"10px";
+    border:" 1px solid";
+    background-color:"white";
+    font-size:"small";
+    text-align:"left";
+}
