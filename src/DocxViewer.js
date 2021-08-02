@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import mammoth from "@ree_n/jsDocxToHtml"
+import jsDocxToHtml from "@ree_n/jsDocxToHtml"
 import { Scrollbars } from 'react-custom-scrollbars';
 
 import './DocxViewer.css'
@@ -11,19 +11,12 @@ const DocxViewer = (props) => {
 
     useEffect(
         () => {
-        fetch("test1.docx", {}).then(response => response.blob())
-            .then(blob => blob.arrayBuffer())
-            .then(arrayBuffer => {
-                mammoth.convertToHtml({arrayBuffer: arrayBuffer})
-                .then((result) => {
-                    setHtml(result.html);
-                    setComments(result.comments.map((comment) => CommentElement(comment)))
-                    
+            jsDocxToHtml.convertToHtml(props.arrayBuffer)
+                    .then((result) => {
+                        setHtml(result.html);
+                        setComments(result.comments.map((comment) => CommentElement(comment)))  
                 })
-                .done();
-            })
-        }, []
-    )
+        }, [props.arrayBuffer])
     
 
     const viewerStyle = {
