@@ -12,12 +12,12 @@ const DocxViewer = (props) => {
 
     useEffect(
         () => {
-            jsDocxToHtml.convertToHtml(props.arrayBuffer)
-                    .then((result) => {
-                        setHtml(result.html);
-                        setComments(result.comments.map((comment) => CommentElement(comment)))  
-                })
-        }, [props.arrayBuffer])
+            jsDocxToHtml.convertToHtml(props.blob)
+                .then((result) => {
+                    setHtml(result.html);
+                    setComments(result.comments.map((comment) => CommentElement(comment)))  
+            })
+        }, [props.blob])
     
 
     const viewerStyle = {

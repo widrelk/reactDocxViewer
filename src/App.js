@@ -8,10 +8,7 @@ function App() {
   useEffect(
     () => {
       fetch("test1.docx", {}).then(response => response.blob())
-        .then(blob => blob.arrayBuffer())
-          .then(arrayBuffer => {
-            setDocxFile(arrayBuffer)
-          })
+        .then(blob => setDocxFile(blob))
     }, [])
   
   return (
@@ -30,7 +27,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <DocxViewer width="1000px" height="800px" arrayBuffer={ docxFile }></DocxViewer>
+      <DocxViewer width="1000px" height="800px" blob={ docxFile }></DocxViewer>
     </div>
   );
 }
