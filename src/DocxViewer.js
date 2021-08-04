@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import jsDocxToHtml from "@ree_n/jsDocxToHtml"
 import { Scrollbars } from 'react-custom-scrollbars';
+import Collapsible from 'react-collapsible';
 
 import './DocxViewer.css'
 
@@ -26,14 +27,7 @@ const DocxViewer = (props) => {
         margin: "10px"
     }
 
-    const commentsAreaStyle = {
-        height: props.height || "800px",
-        flex: 1, 
-        float:"left",
-        borderRight: '2px solid black',
-        paddingRight: "10px",
-        verticalAlign:"top",
-    }
+    
 
     const documentStyle = {
         height: props.height || "800px",
@@ -41,14 +35,39 @@ const DocxViewer = (props) => {
         float:"left",
         marginLeft:"5px",
     }
+
+    const menuStyle = {
+        height: props.height || "800px",
+        flex: 1, 
+        float:"left",
+        borderRight: '2px solid black',
+        paddingRight: "10px",
+        verticalAlign:"top"
+    }
+
+    const commentsAreaStyle = {
+        height: props.height || "800px",
+        flex: 1, 
+        float:"left",
+        borderRight: '2px solid black',
+        paddingRight: "10px",
+        verticalAlign:"top"
+    }
+
+    const collapsibleCommentsTitle = "Комментарии"
+    const collapsibleCommentsTitleOpen = "Комментарии"
     // Тут бы обернуть комментарии в какой-нить collapsible, но все, что пробовал, выдают 
     // Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object.
     return(
-        <div style={ viewerStyle }>
-            <Scrollbars style={ commentsAreaStyle }>
-                {comments}
-            </Scrollbars>
-
+        <div id="viewer" style={ viewerStyle }>
+            <div id="menuArea" style = {menuStyle}>
+                <Collapsible trigger={ collapsibleCommentsTitle } triggerWhenOpen={ collapsibleCommentsTitleOpen } >
+                    <Scrollbars style={ commentsAreaStyle }>
+                        {comments}
+                    </Scrollbars>
+                </Collapsible>
+            </div>
+            
             <Scrollbars style={ documentStyle }>
                 <div dangerouslySetInnerHTML={{__html: html}}></div>
             </Scrollbars>
@@ -62,7 +81,7 @@ function CommentElement(comment) {
     return( 
         // Почему-то если вынести эти стили в css они перестают работать
         // Кружок вложен в div чтобы вне зависимости от соотношений flex он всегда был нужного размера
-        <div style={{margin:"0 13px 10px 0", padding:"7px", borderRadius:"10px", 
+        <div style={{margin:"10px 13px 0 0", padding:"7px", borderRadius:"10px", 
                         border:" 1px solid", fontSize:"small", textAlign:"left"}} onClick={setCommentCss}>
             <a className="commentLink" href={'#' + comment.linkTo}>
                 <div style={ { display:"flex"} }>

@@ -37,3 +37,7 @@ div.commentShell {
     font-size:"small";
     text-align:"left";
 }
+.Collapsible__trigger{
+    background-color: aquamarine;
+    border: 1px solid black;
+}
