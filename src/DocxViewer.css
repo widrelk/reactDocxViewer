@@ -28,15 +28,6 @@ span.commentArea:hover {
     background-color: green;
 }
 
-div.commentShell {
-    margin-bottom:"10px";
-    padding:"7px";
-    border-radius:"10px";
-    border:" 1px solid";
-    background-color:"white";
-    font-size:"small";
-    text-align:"left";
-}
 .Collapsible__trigger{
     background-color: aquamarine;
     border: 1px solid black;
