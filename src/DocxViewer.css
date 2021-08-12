@@ -15,20 +15,47 @@ a.commentLink:active {
     text-decoration: none;
 }
 
+#DocxViewerHeader {
+    background-color: #185abd;
+    color: white;
+    text-align: left;
+    padding: 5px 0 5px 50px;
+
+    font-size: 17px;
+    font-family: Calibri;
+}
+#DocxViewerHeader > p {
+    margin: 0;
+}
+
 span.commentArea {
-    transition: background-color 2s;
+    transition: background-color 0.5s;
 }
-span.commentAreaSelected {
-    background-color:coral;
+span.commentArea.active {
+    background-color:lightgreen;
 }
-span.commentArea:focus {
+span.commentArea.toggled {
     background-color: coral;
-}
-span.commentArea:hover {
-    background-color: green;
 }
 
 .Collapsible__trigger{
     background-color: aquamarine;
     border: 1px solid black;
+}
+
+div.Comment {
+    background-color: white ;
+    margin-right: 13px;
+    margin-left: 5px;
+    margin-block: 10px;
+    padding: 7px ;
+    box-shadow: 0 0 0 1px black; 
+    border-radius: 10px;
+    font-size: small ;
+    text-align: left;
+    transition: margin-block 0.7s;
+}
+div.Comment.toggled {
+    margin-block: 17px;
+    box-shadow: 0 0 0 3px coral, 3px 3px 0px 3px rgba(0, 0, 0, 0.25);
 }

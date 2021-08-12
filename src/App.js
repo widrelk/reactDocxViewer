@@ -27,7 +27,7 @@ function App() {
           Learn React
         </a>
       </header>
-      <DocxViewer width="1000px" height="800px" blob={ docxFile }></DocxViewer>
+      <DocxViewer width="1200px" height="800px" blob={ docxFile } title="test1.docx"/>
     </div>
   );
 }

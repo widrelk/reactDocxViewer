@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import "./CommentElement.css"
+import React from "react";
+import "./DocxViewer.css"
 
 
 const CommentElement = (props) => {
-    const [commentSelected, toggleComment] = useState(false)
 
     const content = props.comment.content[0]
     const linkTo = props.comment.linkTo
+    const commentClass = props.commentClass
     return( 
         // Почему-то если вынести эти стили в css они перестают работать
         // Кружок вложен в div чтобы вне зависимости от соотношений flex он всегда был нужного размера
-        <div className={ constants.commentDefStyle }  onClick={setCommentCss}>
+        <div className={ commentClass } id={ commentClass + linkTo }  onClick={ () => props.toggleComment(linkTo) }>
             <a className="commentLink" href={'#' + props.comment.linkTo}>
                 <div style={ { display:"flex"} }>
                     <div style={ {flex:"1"} }>
@@ -30,21 +30,6 @@ const CommentElement = (props) => {
             </a>
         </div>
     )
-    // TODO: Сделать это нормально через transition
-    function setCommentCss() { 
-        // document.getElementById(linkTo).focus() Странно, но в css :focus не срабатывало. Изначальный стиль устанавливается и работает, 
-        // а дополнительные почему-то нет. Пробовал с setTimeout, тоже не работало.
-        // возможно, связано с постоянным ререндером
-        document.getElementById(linkTo).classList.toggle("commentArea")
-        document.getElementById(linkTo).classList.toggle("commentAreaSelected")
-
-    }
-}
-
-const constants = {
-    commentClass: "comment",
-    commentDefStyle: "Comment__default",
-    commentToggledStyle: "Comment__toggled"
 }
 
 export default CommentElement
